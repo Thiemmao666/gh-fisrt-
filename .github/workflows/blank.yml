@@ -1,16 +1,19 @@
-# This is a basic workflow to help you get started with Actions
+name: Simple CI test
 
-name: fristname 
-
-
-on: workflow_dispatch
-
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
 
 jobs:
-  frist-jobs:
+  test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: print getting
-        run:  echo"ssss"
-      - name: bye_ssjsj
-        run:  echo"bye"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run simple command
+        run: |
+          echo "Hello GitHub Actions"
+          uname -a
